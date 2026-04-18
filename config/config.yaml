@@ -9,7 +9,7 @@ options:
   preview_chars: 1000
 
 model:
-  embedding_model: BAAI/bge-base-en-v1.5
+  embedding_model: all-MiniLM-L6-v2
 
 retrieval:
   top_k: 5
