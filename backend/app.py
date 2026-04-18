@@ -13,7 +13,10 @@ from llm.groq_client import generate_answer
 # LOAD CONFIG
 # -------------------------------
 def load_config():
-    with open("config/config.yaml", "r") as f:
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    config_path = os.path.join(base_dir, "config", "config.yaml")
+
+    with open(config_path, "r") as f:
         return yaml.safe_load(f)
 
 
