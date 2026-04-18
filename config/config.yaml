@@ -1,7 +1,6 @@
 paths:
-  raw_data: "data/raw"
-  processed_data: "data/processed"
-  vector_db: vector_db
+  raw_data: /tmp/data
+  vector_db: /tmp/vector_db
 
 limits:
   max_file_size_mb: 10
