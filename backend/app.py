@@ -22,10 +22,14 @@ def load_config():
 
 config = load_config()
 
+os.makedirs("/tmp/data", exist_ok=True)
+os.makedirs("/tmp/vector_db", exist_ok=True)
+
 # -------------------------------
 # INIT APP
 # -------------------------------
 app = FastAPI(title="PolicyPal Backend")
+
 
 # Allow frontend later
 app.add_middleware(
