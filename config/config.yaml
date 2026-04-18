@@ -1,0 +1,19 @@
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  vector_db: vector_db
+
+limits:
+  max_file_size_mb: 10
+
+options:
+  preview_chars: 1000
+
+model:
+  embedding_model: BAAI/bge-base-en-v1.5
+
+retrieval:
+  top_k: 5
+
+groq:
+  model: llama-3.1-8b-instant

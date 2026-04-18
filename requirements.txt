@@ -1,0 +1,28 @@
+# Core
+streamlit
+pyyaml
+requests
+beautifulsoup4
+lxml
+
+# Parsing
+python-docx
+pymupdf
+
+# Embedding
+sentence-transformers
+
+# Vector DB
+faiss-cpu
+
+# Utils
+numpy
+scikit-learn
+
+python-dotenv
+groq
+
+
+fastapi
+uvicorn
+python-multipart

@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Virtual environment
+my_env/
+venv/
+.env/
+
+# Environment variables
+.env
+.env.*
+
+# Streamlit
+.streamlit/
+
+# Data folders
+data/
+vector_db/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build
+dist/
+build/
+
+# Misc
+*.bak
+*.tmp
+
+apps.py
