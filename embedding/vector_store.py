@@ -1,44 +1,38 @@
 import faiss
 import numpy as np
-import os
-import pickle
+
+VECTOR_STORE = {
+    "index": None,
+    "metadata": []
+}
 
 
-def create_faiss_index(embeddings):
+def create_index(embeddings, metadata):
 
     dim = embeddings.shape[1]
+    index = faiss.IndexFlatL2(dim)
+    index.add(np.array(embeddings))
 
-    index = faiss.IndexFlatIP(dim)  # cosine similarity (since normalized)
-
-    index.add(embeddings)
-
-    return index
-
-
-def save_index(index, metadata, path="vector_db"):
-
-    os.makedirs(path, exist_ok=True)
-
-    faiss.write_index(index, os.path.join(path, "index.faiss"))
-
-    with open(os.path.join(path, "metadata.pkl"), "wb") as f:
-        pickle.dump(metadata, f)
-
-    print("✅ Vector DB saved")
+    VECTOR_STORE["index"] = index
+    VECTOR_STORE["metadata"] = metadata
 
 
-def load_index(path="vector_db"):
+def search(query_embedding, top_k=5):
 
-    index = faiss.read_index(os.path.join(path, "index.faiss"))
+    index = VECTOR_STORE["index"]
 
-    with open(os.path.join(path, "metadata.pkl"), "rb") as f:
-        metadata = pickle.load(f)
+    if index is None:
+        return []
 
-    return index, metadata
+    D, I = index.search(query_embedding, top_k)
+
+    results = []
+    for idx in I[0]:
+        results.append(VECTOR_STORE["metadata"][idx])
+
+    return results
 
 
-def search(index, query_embedding, top_k=5):
-
-    scores, indices = index.search(query_embedding, top_k)
-
-    return scores, indices
+def reset_store():
+    VECTOR_STORE["index"] = None
+    VECTOR_STORE["metadata"] = []

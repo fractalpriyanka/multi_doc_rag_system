@@ -1,6 +1,6 @@
 paths:
   raw_data: /tmp/data
-  vector_db: /tmp/vector_db
+  processed_data: /tmp/processed_data
 
 limits:
   max_file_size_mb: 10
@@ -9,7 +9,7 @@ options:
   preview_chars: 1000
 
 model:
-  embedding_model: BAAI/bge-base-en-v1.5
+  embedding_model: sentence-transformers/all-MiniLM-L6-v2
 
 retrieval:
   top_k: 5

@@ -7,6 +7,7 @@ __pycache__/
 *.sqlite3
 
 # Virtual environment
+final_env/
 my_env/
 venv/
 .env/
@@ -15,8 +16,7 @@ venv/
 .env
 .env.*
 
-# Streamlit
-.streamlit/
+
 
 # Data folders
 data/
@@ -44,4 +44,10 @@ build/
 *.bak
 *.tmp
 
-apps.py
+backend/
+final_env/
+my_env/
+temp/
+vector_db/
+data/
+raw/

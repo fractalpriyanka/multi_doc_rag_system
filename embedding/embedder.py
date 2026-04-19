@@ -1,27 +1,14 @@
 from sentence_transformers import SentenceTransformer
 
+model = None
 
-# 🔥 Load model once
-model = SentenceTransformer("BAAI/bge-base-en-v1.5")
-
-
-def create_embedding_text(chunk):
-    """
-    Combine hierarchy + title + text
-    THIS IS VERY IMPORTANT FOR POLICY DOCS
-    """
-
-    section_id = chunk.get("section_id", "")
-    title = chunk.get("title", "")
-    text = chunk.get("text", "")
-
-    return f"{section_id} {title}. {text}"
+def load_model(model_name):
+    global model
+    if model is None:
+        model = SentenceTransformer(model_name)
+    return model
 
 
-def embed_chunks(chunks):
-
-    texts = [create_embedding_text(c) for c in chunks]
-
-    embeddings = model.encode(texts, normalize_embeddings=True)
-
-    return embeddings, texts
+def embed_texts(texts, config):
+    model = load_model(config["model"]["embedding_model"])
+    return model.encode(texts, show_progress_bar=True)

@@ -1,28 +1,24 @@
-# Core
 streamlit
+
+# Core utils
 pyyaml
 requests
-beautifulsoup4
-lxml
+python-dotenv
 
 # Parsing
+beautifulsoup4
+lxml
 python-docx
 pymupdf
 
-# Embedding
+# Embeddings
 sentence-transformers
 
 # Vector DB
 faiss-cpu
-
-# Utils
 numpy
-scikit-learn
 
-python-dotenv
+# LLM (optional)
 groq
+torchvision
 
-
-fastapi
-uvicorn
-python-multipart
