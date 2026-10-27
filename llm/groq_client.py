@@ -1,4 +1,5 @@
-from groq import Groq
+```python
+from google import genai
 import os
 from dotenv import load_dotenv
 
@@ -6,12 +7,12 @@ load_dotenv()
 
 
 def get_groq_client():
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
-        raise ValueError("GROQ_API_KEY not set")
+        raise ValueError("GEMINI_API_KEY not set")
 
-    return Groq(api_key=api_key)
+    return genai.Client(api_key=api_key)
 
 
 def generate_answer(context_chunks, query, config):
@@ -36,9 +37,13 @@ Question:
 {query}
 """
 
-    response = client.chat.completions.create(
+    response = client.models.generate_content(
         model=config["groq"]["model"],
-        messages=[{"role": "user", "content": prompt}]
+        contents=prompt
     )
 
-    return response.choices[0].message.content
+    if not response.text:
+        raise ValueError("Gemini returned an empty response.")
+
+    return response.text
+```
