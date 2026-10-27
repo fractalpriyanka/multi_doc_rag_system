@@ -15,4 +15,4 @@ retrieval:
   top_k: 5
 
 groq:
-  model: model: gemini-2.5-flash
+  model: gemini-2.5-flash
