@@ -1,4 +1,3 @@
-```python
 from google import genai
 import os
 from dotenv import load_dotenv
@@ -46,4 +45,4 @@ Question:
         raise ValueError("Gemini returned an empty response.")
 
     return response.text
-```
+
