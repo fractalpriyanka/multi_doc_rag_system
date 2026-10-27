@@ -21,4 +21,5 @@ numpy
 # LLM (optional)
 groq
 torchvision
+google-genai
 
